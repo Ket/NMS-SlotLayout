@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+	<head>
+		<title>TODO supply a title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="assets/jquery-ui.css" rel="stylesheet"/>
+		<style>
+			#content {
+				min-height: 1100px;
+			}
+			.module {
+				width: 100px;
+				height: 100px;
+				background: orange;
+				position:absolute;
+				z-index: 1;
+				text-align: center;
+				vertical-align: middle;
+			}
+			.slotArea {
+				width: 100px;
+				height: 100px;
+				background: grey;
+			}
+			.slotBorder{
+				position:absolute;
+				border-width: 2px;
+				border-style: solid;
+			}
+			#statsList{
+				position:absolute;
+				left:1200px;
+				top:100px;
+			}
+			#moduleList{
+				position:relative;
+				top:50px;
+				left:20px;
+			}
+		</style>
+		<script src="assets/jquery-3.2.1.js"></script>
+		<script src="assets/jquery-ui.js"></script>
+	</head>
+	<body>
+		<div id="content">
+			<div id="categoryContainer"></div>
+			<div id="groupContainer"></div>
+			<div id="moduleList" class="moduleList"></div>
+			<div id="slotsDiv"></div>
+			<div id="statsList"></div>
+		</div>
+		<script>
+		$.getJSON("modules.json", function(data){
+			moduleSet = data;
+			var flags = [], categories = [], l = moduleSet.length, i;
+			for( i=0; i<l; i++) {
+				if(flags[moduleSet[i].category]) continue;
+				flags[moduleSet[i].category] = true;
+				if (typeof moduleSet[i].category !== "undefined"){
+					categories.push(moduleSet[i].category);
+				}
+			}
+			var select = $('<select name="categoryDropdown" id="categoryDropdown"></select>');
+			select.append('<option value="">--Category--</option>');
+			$.each(categories, function(index, value) {
+				var option = $('<option></option>');
+				option.attr('value', value);
+				option.text(value);
+				select.append(option);
+			});
+			$("#categoryContainer").empty().append(select);
+			$("#categoryDropdown").on("change",function(e){
+				if ($(this).val() == ""){
+					$("#groupContainer").empty()
+				} else {
+					var categorySet = getCategory($(this).val());
+					var flags = [], groups = [], l = categorySet.length, i;
+					for( i=0; i<l; i++) {
+						if(flags[categorySet[i].group]) continue;
+						flags[categorySet[i].group] = true;
+						if (typeof categorySet[i].group !== "undefined"){
+							groups.push(categorySet[i].group);
+						}
+					}
+					var select = $('<select name="groupDropdown" id="groupDropdown"></select>');
+					select.append('<option value="">--Module Group--</option>');
+					$.each(groups, function(index, value) {
+						var option = $('<option></option>');
+						option.attr('value', value);
+						option.text(value);
+						select.append(option);
+					});
+					$("#groupContainer").empty().append(select);
+					$("#groupDropdown").on("change",function(e){
+						createModules($(this).val());
+					});
+				}
+			});
+			updateStats();
+		});
+		function createArray(length) {
+			var arr = new Array(length || 0),
+				i = length;
+
+			if (arguments.length > 1) {
+				var args = Array.prototype.slice.call(arguments, 1);
+				while(i--) arr[length-1 - i] = createArray.apply(this, args);
+			}
+
+			return arr;
+		}
+		var maxX = 8;
+		var maxY = 9;
+		var offsetX = 200;
+		var offsetY = 0;
+		var slots = createArray(maxX,maxY);
+		
+		function calcAdjacent(stat,type,lesser){
+			if (lesser){
+				if (type === "muliplicative"){
+					return stat * 0.03;
+				} else if (type ===  "additive"){
+					return stat * 0.05;
+				}
+			} else {
+				if (type === "muliplicative"){
+					return stat * 0.04;
+				} else if (type ===  "additive"){
+					return stat * 0.06;
+				}
+			}
+		}
+		function getById(arr, value) {
+			for (var i=0, iLen=arr.length; i<iLen; i++) {
+			  if (arr[i].id === value){
+				arr[i].index = i;  
+				return arr[i];
+			  }
+			}
+		}
+		function calculateStats(slots){
+			var activeModules = [];
+			for (var i = 0; i < maxY;i++){
+				for (var j = 0; j < maxX;j++){
+					if (slots[i] && slots[i][j]){
+						currentModule = getById(moduleSet,slots[i][j]);
+						for (var k = 0; k < currentModule.stats.length;k++){
+							var stat = currentModule.stats[k];
+							var bonus = 0;
+							if (stat.hasBonus){
+								if (slots[i-1] && slots[i-1][j]){
+									var adjacent = getById(moduleSet,slots[i-1][j]);
+									if (adjacent.group === currentModule.group){
+										bonus += calcAdjacent(stat.value,stat.type,adjacent.lesser);
+									}
+								}
+								if (slots[i+1] && slots[i+1][j]){
+									var adjacent = getById(moduleSet,slots[i+1][j]);
+									if (adjacent.group === currentModule.group){
+										bonus += calcAdjacent(stat.value,stat.type,adjacent.lesser);
+									}
+								}
+								if (slots[i][j-1]){
+									var adjacent = getById(moduleSet,slots[i][j-1]);
+									if (adjacent.group === currentModule.group){
+										bonus += calcAdjacent(stat.value,stat.type,adjacent.lesser);
+									}
+								}
+								if (slots[i][j+1]){
+									var adjacent = getById(moduleSet,slots[i][j+1]);
+									if (adjacent.group === currentModule.group){
+										bonus += calcAdjacent(stat.value,stat.type,adjacent.lesser);
+									}
+								}
+							}
+							currentModule.stats[k].bonus = bonus;							
+						}
+						activeModules[currentModule.index] = currentModule;
+					}
+				}
+			}
+			return activeModules;
+		}
+		function getCategory(category){
+			return moduleSet.filter(function (module){
+				return module.category === category;
+			});
+		}
+		function createSlots(x,y){
+			for (var i = 0; i < y;i++){
+				for (var j = 0; j < x;j++){
+					if (i != 6){
+						$("#slotsDiv").append("<div class='slotBorder' style='top:"+(((i+1)*105)+offsetY)+"px; left:"+(((j+1)*105)+offsetX)+"px;'><div id=slotX"+j+"Y"+i+" class='slotArea' data-x="+j+" data-y="+i+"></div></div>");
+					}
+				}
+			}
+		}
+		function createModules(group){
+			groupSet = moduleSet.filter(function (module){
+				return (module.group === group && module.placed != true);
+			});
+			$("#moduleList").children().not(".placed").remove();
+			$.each(groupSet, function(index, value) {
+				var module = $('<div class="module"></div>');
+				module.data("id",value.id);
+				module.text(value.name);
+				console.log(index);
+				if (index % 2 == 0){
+					module.css({top:index/2*105, left:0})
+				} else {
+					module.css({top:(index-1)/2*105, left:105})
+				}
+				$("#moduleList").append(module);
+			});
+			$( ".module" ).draggable({
+				snap: ".slotArea",
+				snapMode: "inner"
+			});
+		}
+		function updateStats(){
+			var modules = calculateStats(slots);
+			$("#statsList").empty();
+			for (var i = 0; i < modules.length; i++){
+				currentModule = modules[i];
+				if (typeof currentModule !== "undefined"){
+					filteredModules = modules.filter(function (module,index,arr){
+						if (module.group === currentModule.group){
+							delete arr[index];
+							return true;
+						}
+						return false;
+					});
+					var groupStats = [];
+					var combinedStats = {};
+					for (var j = 0; j<filteredModules.length;j++){
+						groupStats = groupStats.concat(filteredModules[j].stats);
+					}
+					for (var j = 0; j<groupStats.length;j++){
+						if (groupStats[j].type === "multiplicative"){
+							combinedStats[groupStats[j].stat] = (combinedStats[groupStats[j].stat] ? combinedStats[groupStats[j].stat] : 1) * (groupStats[j].value + groupStats[j].bonus);
+						} else if (groupStats[j].type === "additive"){
+							combinedStats[groupStats[j].stat] = (combinedStats[groupStats[j].stat] ? combinedStats[groupStats[j].stat] : 0) + (groupStats[j].value + groupStats[j].bonus);
+						}
+					}
+					$("#statsList").append("<h3>"+currentModule.group+"</h3>");
+					for (var key in combinedStats) {
+						if (combinedStats.hasOwnProperty(key)) {
+							stat = Math.round((combinedStats[key] + 0.00001) * 100) / 100;
+							$("#statsList").append("<p>"+key+": "+stat+"</p>");
+						}
+					}
+				}
+			}
+		}
+		createSlots(maxX,maxY);
+		$( ".module" ).draggable({
+			snap: ".slotArea",
+			snapMode: "inner"
+		});
+		$(".slotArea").droppable({
+			tolerance: "fit",
+			greedy: true,
+			drop: function(e, ui){
+				moduleSet[getById(moduleSet, ui.draggable.data().id).index].placed = true;
+				if (typeof slots[ui.draggable.data().x] !== "undefined"){
+					delete slots[ui.draggable.data().x][ui.draggable.data().y];
+				}
+				slots[$(this).data().x][$(this).data().y] = ui.draggable.data().id;
+				ui.draggable.data("x",$(this).data().x);
+				ui.draggable.data("y",$(this).data().y);
+				ui.draggable.addClass("placed");
+				updateStats();
+			}
+		});
+		$("#content").droppable({
+			drop: function(e, ui){
+				moduleSet[getById(moduleSet, ui.draggable.data().id).index].placed = false;
+				ui.draggable.removeClass("placed");
+				if (typeof slots[ui.draggable.data().x] !== "undefined"){
+					delete slots[ui.draggable.data().x][ui.draggable.data().y];
+					updateStats();
+				}
+			}
+		});
+		</script>
+	</body>
+</html>
