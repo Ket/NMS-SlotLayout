@@ -29,13 +29,16 @@
 				border-style: solid;
 			}
 			#statsList{
+				width: 310px;
+				border: solid 1px;
+				padding: 5px;
 				position:absolute;
 				left:1200px;
-				top:100px;
+				top:105px;
 			}
 			#moduleList{
-				position:relative;
-				top:50px;
+				position:absolute;
+				top:105px;
 				left:20px;
 			}
 		</style>
@@ -191,7 +194,7 @@
 		function createSlots(x,y){
 			for (var i = 0; i < y;i++){
 				for (var j = 0; j < x;j++){
-					if (i != 6){
+					if (i !== 6){
 						$("#slotsDiv").append("<div class='slotBorder' style='top:"+(((i+1)*105)+offsetY)+"px; left:"+(((j+1)*105)+offsetX)+"px;'><div id=slotX"+j+"Y"+i+" class='slotArea' data-x="+j+" data-y="+i+"></div></div>");
 					}
 				}
@@ -206,17 +209,20 @@
 				var module = $('<div class="module"></div>');
 				module.data("id",value.id);
 				module.text(value.name);
-				if (index % 2 == 0){
-					module.css({top:index/2*105, left:0})
+				module.data("listIndex",index);
+				if (index % 2 === 0){
+					module.css({top:index/2*105, left:0});
 				} else {
-					module.css({top:(index-1)/2*105, left:105})
+					module.css({top:(index-1)/2*105, left:105});
 				}
 				$("#moduleList").append(module);
 			});
 			$( ".module" ).draggable({
-				snap: ".slotArea",
+				snap: ".slotArea",//:not(.used)",
 				snapMode: "inner",
-				revert: "invalid"
+				revert: "invalid",
+				snapTolerance: 5,
+				zIndex:2
 			});
 		}
 		function updateStats(){
@@ -254,30 +260,62 @@
 				}
 			}
 		}
+		function removeFromSlot(module,currentSlot){
+			moduleSet[getById(moduleSet, module.data().id).index].placed = false;
+			module.removeClass("placed");
+			if (typeof slots[module.data().x] !== "undefined"){
+				delete slots[module.data().x][module.data().y];
+				var oldSlot = $("#slotX"+module.data().x+"Y"+module.data().y);
+				oldSlot.parent().css("border-color","black");
+				oldSlot.removeClass("used");
+				module.data("x","");
+				module.data("y","");
+			}
+		}
+		function addToSlot(module,currentSlot){
+			moduleSet[getById(moduleSet, module.data().id).index].placed = true;
+			slots[currentSlot.data().x][currentSlot.data().y] = module.data().id;
+			module.data("x",currentSlot.data().x);
+			module.data("y",currentSlot.data().y);
+			module.addClass("placed");
+			currentSlot.parent().css("border-color","lightgreen");
+			currentSlot.addClass("used");
+		}
 		createSlots(maxX,maxY);
 		$(".slotArea").droppable({
 			tolerance: "fit",
 			greedy: true,
 			drop: function(e, ui){
-				moduleSet[getById(moduleSet, ui.draggable.data().id).index].placed = true;
-				if (typeof slots[ui.draggable.data().x] !== "undefined"){
-					delete slots[ui.draggable.data().x][ui.draggable.data().y];
+				droppable = $(this);
+				if (droppable.hasClass("used")){
+					var oldModule;
+					$(".module.placed").each(function(){
+						if (($(this).data().x ===  droppable.data().x) && ($(this).data().y ===  droppable.data().y)){
+							oldModule = $(this);
+							return false;
+						}
+					});
+					removeFromSlot(oldModule,droppable);
+					if (getById(moduleSet, oldModule.data().id).group === $("#groupDropdown").val()){
+						var index = oldModule.data().listIndex;
+						if (index % 2 === 0){
+							oldModule.css({top:index/2*105, left:0});
+						} else {
+							oldModule.css({top:(index-1)/2*105, left:105});
+						}
+					} else {
+						oldModule.remove();
+					}
 				}
-				slots[$(this).data().x][$(this).data().y] = ui.draggable.data().id;
-				ui.draggable.data("x",$(this).data().x);
-				ui.draggable.data("y",$(this).data().y);
-				ui.draggable.addClass("placed");
+				removeFromSlot(ui.draggable,droppable);
+				addToSlot(ui.draggable,droppable);
 				updateStats();
 			}
 		});
 		$("#content").droppable({
 			drop: function(e, ui){
-				moduleSet[getById(moduleSet, ui.draggable.data().id).index].placed = false;
-				ui.draggable.removeClass("placed");
-				if (typeof slots[ui.draggable.data().x] !== "undefined"){
-					delete slots[ui.draggable.data().x][ui.draggable.data().y];
-					updateStats();
-				}
+				removeFromSlot(ui.draggable,$(this));
+				updateStats();
 			}
 		});
 		</script>

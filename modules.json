@@ -765,35 +765,482 @@
 		"group":"Ship Scanner",
 		"stats":[]
 	},
-	{"id":"SHIPLASCOOL1"},
-	{"id":"SHIPLASCOOL2"},
-	{"id":"SHIPLASCOOL3"},
-	{"id":"SHIPLDMG1"},
-	{"id":"SHIPLDMG2"},
-	{"id":"SHIPLDMG3"},
-	{"id":"SHIPGUNCOOL1"},
-	{"id":"SHIPGUNCOOL2"},
-	{"id":"SHIPGUNCOOL3"},
-	{"id":"SHIPGUNRATE1"},
-	{"id":"SHIPGUNRATE2"},
-	{"id":"SHIPGUNRATE3"},
-	{"id":"SHIPGDMG1"},
-	{"id":"SHIPGDMG2"},
-	{"id":"SHIPGDMG3"},
-	{"id":"SHIPSHLDBOOST1"},
-	{"id":"SHIPSHLDBOOST2"},
-	{"id":"SHIPSHLDBOOST3"},
-	{"id":"SHIPJUMP2"},
-	{"id":"SHIPJUMP3"},
-	{"id":"PHOTONIX_CORE"},
-	{"id":"HDRIVEBOOST1"},
-	{"id":"HDRIVEBOOST2"},
-	{"id":"HDRIVEBOOST3"},
-	{"id":"LAUNCHER"},
-	{"id":"F_HYPERDRIVE"},
-	{"id":"F_HDRIVEBOOST1"},
-	{"id":"F_HDRIVEBOOST2"},
-	{"id":"F_HDRIVEBOOST3"},
+	{
+		"id":"SHIPLASCOOL1",
+		"name":"Phase Coolant Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Phase Beam",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Lasers_HeatTime",
+				"value":1.5,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPLASCOOL2",
+		"name":"Phase Coolant Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Phase Beam",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Lasers_HeatTime",
+				"value":2,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPLASCOOL3",
+		"name":"Phase Coolant Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Phase Beam",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Lasers_HeatTime",
+				"value":2.5,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPLDMG1",
+		"name":"Beam Impact Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Phase Beam",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Lasers_Damage",
+				"value":40,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPLDMG2",
+		"name":"Beam Impact Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Phase Beam",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Lasers_Damage",
+				"value":70,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPLDMG3",
+		"name":"Beam Impact Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Phase Beam",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Lasers_Damage",
+				"value":100,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPGUNCOOL1",
+		"name":"Advanced Cooling Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Photon Cannon",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.0201,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPGUNCOOL2",
+		"name":"Advanced Cooling Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Photon Cannon",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.0301,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPGUNCOOL3",
+		"name":"Advanced Cooling Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Photon Cannon",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.0401,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPGUNRATE1",
+		"name":"Accelerated Fire Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Photon Cannon",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.011,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPGUNRATE2",
+		"name":"Accelerated Fire Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Photon Cannon",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.021,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPGUNRATE3",
+		"name":"Accelerated Fire Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Photon Cannon",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.031,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPGDMG1",
+		"name":"Cannon Damage Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Photon Cannon",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":8,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPGDMG2",
+		"name":"Cannon Damage Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Photon Cannon",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":14,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPGDMG3",
+		"name":"Cannon Damage Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Photon Cannon",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":18,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPSHLDBOOST1",
+		"name":"Deflection Enhancement Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Deflector Shield",
+		"stats":[
+			{
+				"stat":"Ship_Armour_Shield_Strength",
+				"value":0.1,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPSHLDBOOST2",
+		"name":"Deflection Enhancement Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Deflector Shield",
+		"stats":[
+			{
+				"stat":"Ship_Armour_Shield_Strength",
+				"value":0.2,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPSHLDBOOST3",
+		"name":"Deflection Enhancement Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Deflector Shield",
+		"stats":[
+			{
+				"stat":"Ship_Armour_Shield_Strength",
+				"value":0.3,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPJUMP2",
+		"name":"Pulse Jet Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Pulse Engine",
+		"stats":[
+			{
+				"stat":"Ship_PulseDrive_MiniJumpFuelSpending",
+				"value":0.75,
+				"type":"multiplicative",
+				"hasBonus":false
+			},
+			{
+				"stat":"Ship_Boost",
+				"value":1.1,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPJUMP3",
+		"name":"Pulse Jet Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Pulse Engine",
+		"stats":[
+			{
+				"stat":"Ship_PulseDrive_MiniJumpFuelSpending",
+				"value":0.6,
+				"type":"multiplicative",
+				"hasBonus":false
+			},
+			{
+				"stat":"Ship_Boost",
+				"value":1.15,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"PHOTONIX_CORE",
+		"name":"Photonix Core",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Pulse Engine",
+		"stats":[
+			{
+				"stat":"Ship_PulseDrive_MiniJumpFuelSpending",
+				"value":0.75,
+				"type":"multiplicative",
+				"hasBonus":false
+			},
+			{
+				"stat":"Ship_Boost",
+				"value":1.15,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"HDRIVEBOOST1",
+		"name":"Warp Reactor Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Hyperdrive",
+		"stats":[
+			{
+				"stat":"Ship_Hyperdrive_JumpDistance",
+				"value":100,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"HDRIVEBOOST2",
+		"name":"Warp Reactor Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Hyperdrive",
+		"stats":[
+			{
+				"stat":"Ship_Hyperdrive_JumpDistance",
+				"value":200,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"HDRIVEBOOST3",
+		"name":"Warp Reactor Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Hyperdrive",
+		"stats":[
+			{
+				"stat":"Ship_Hyperdrive_JumpDistance",
+				"value":400,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"LAUNCHER",
+		"name":"Launch Thruster",
+		"core":true,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Launch Thruster",
+		"stats":[
+		]
+	},
+	{
+		"id":"F_HYPERDRIVE",
+		"name":"Freighter Hyperdrive",
+		"core":true,
+		"lesser":true,
+		"category":"Freighter",
+		"group":"Freighter Hyperdrive",
+		"stats":[
+			{
+				"stat":"Freighter_Hyperdrive_JumpDistance",
+				"value":500,
+				"type":"additive",
+				"hasBonus":false
+			}
+		]
+	},
+	{
+		"id":"F_HDRIVEBOOST1",
+		"name":"Freighter Warp Reactor Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Freighter",
+		"group":"Freighter Hyperdrive",
+		"stats":[
+			{
+				"stat":"Freighter_Hyperdrive_JumpDistance",
+				"value":200,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"F_HDRIVEBOOST2",
+		"name":"Freighter Warp Reactor Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Freighter",
+		"group":"Freighter Hyperdrive",
+		"stats":[
+			{
+				"stat":"Freighter_Hyperdrive_JumpDistance",
+				"value":400,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"F_HDRIVEBOOST3",
+		"name":"Freighter Warp Reactor Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Freighter",
+		"group":"Freighter Hyperdrive",
+		"stats":[
+			{
+				"stat":"Freighter_Hyperdrive_JumpDistance",
+				"value":800,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
 	{
 		"id":"LASER",
 		"name":"Mining Beam",
@@ -904,33 +1351,438 @@
 	{"id":"FLORASCAN1"},
 	{"id":"FLORASCAN2"},
 	{"id":"FLORASCAN3"},
-	{"id":"SHIPSGUNDMG1"},
-	{"id":"SHIPSGUNDMG2"},
-	{"id":"SHIPSGUNDMG3"},
-	{"id":"SHIPSGUNRATE1"},
-	{"id":"SHIPSGUNRATE2"},
-	{"id":"SHIPSGUNRATE3"},
-	{"id":"SHIPSGUNCOOL1"},
-	{"id":"SHIPSGUNCOOL2"},
-	{"id":"SHIPSGUNCOOL3"},
-	{"id":"SHIPMGUNDMG1"},
-	{"id":"SHIPMGUNDMG2"},
-	{"id":"SHIPMGUNDMG3"},
-	{"id":"SHIPMGUNRATE1"},
-	{"id":"SHIPMGUNRATE2"},
-	{"id":"SHIPMGUNRATE3"},
-	{"id":"SHIPMGUNCOOL1"},
-	{"id":"SHIPMGUNCOOL2"},
-	{"id":"SHIPMGUNCOOL3"},
-	{"id":"SHIPBLOBDMG1"},
-	{"id":"SHIPBLOBDMG2"},
-	{"id":"SHIPBLOBDMG3"},
-	{"id":"SHIPBLOBRATE1"},
-	{"id":"SHIPBLOBRATE2"},
-	{"id":"SHIPBLOBRATE3"},
-	{"id":"SHIPBLOBCOOL1"},
-	{"id":"SHIPBLOBCOOL2"},
-	{"id":"SHIPBLOBCOOL3"},
+	{
+		"id":"SHIPSGUNDMG1",
+		"name":"Positron Ejector Damage Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Positron Ejector",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":3,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPSGUNDMG2",
+		"name":"Positron Ejector Damage Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Positron Ejector",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":5,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPSGUNDMG3",
+		"name":"Positron Ejector Damage Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Positron Ejector",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":10,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPSGUNRATE1",
+		"name":"Positron Ejector Fire Rate Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Positron Ejector",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.12,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPSGUNRATE2",
+		"name":"Positron Ejector Fire Rate Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Positron Ejector",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.2,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPSGUNRATE3",
+		"name":"Positron Ejector Fire Rate Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Positron Ejector",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.25,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPSGUNCOOL1",
+		"name":"Positron Ejector Coolant Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Positron Ejector",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.1,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPSGUNCOOL2",
+		"name":"Positron Ejector Coolant Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Positron Ejector",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.15,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPSGUNCOOL3",
+		"name":"Positron Ejector Coolant Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Positron Ejector",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.2,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPMGUNDMG1",
+		"name":"Infra-Knife Accelerator Damage Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Infra-Knife Accelerator",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":3,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPMGUNDMG2",
+		"name":"Infra-Knife Accelerator Damage Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Infra-Knife Accelerator",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":5,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPMGUNDMG3",
+		"name":"Infra-Knife Accelerator Damage Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Infra-Knife Accelerator",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":8,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPMGUNRATE1",
+		"name":"Infra-Knife AcceleratorFire Rate Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Infra-Knife Accelerator",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.05,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPMGUNRATE2",
+		"name":"Infra-Knife AcceleratorFire Rate Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Infra-Knife Accelerator",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.10,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPMGUNRATE3",
+		"name":"Infra-Knife AcceleratorFire Rate Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Infra-Knife Accelerator",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.15,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPMGUNCOOL1",
+		"name":"Infra-Knife Accelerator Coolant Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Infra-Knife Accelerator",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.05,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPMGUNCOOL2",
+		"name":"Infra-Knife Accelerator Coolant Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Infra-Knife Accelerator",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.08,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPMGUNCOOL3",
+		"name":"Infra-Knife Accelerator Coolant Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Infra-Knife Accelerator",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.12,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPBLOBDMG1",
+		"name":"Cyclotron Ballista Damage Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Cyclotron Ballista",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":5,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPBLOBDMG2",
+		"name":"Cyclotron Ballista Damage Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Cyclotron Ballista",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":10,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPBLOBDMG3",
+		"name":"Cyclotron Ballista Damage Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Cyclotron Ballista",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Damage",
+				"value":15,
+				"type":"additive",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPBLOBRATE1",
+		"name":"Cyclotron Ballista Fire Rate Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Cyclotron Ballista",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.1,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPBLOBRATE2",
+		"name":"Cyclotron Ballista Fire Rate Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Cyclotron Ballista",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.15,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPBLOBRATE3",
+		"name":"Cyclotron Ballista Fire Rate Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Cyclotron Ballista",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_Rate",
+				"value":1.2,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPBLOBCOOL1",
+		"name":"Cyclotron Ballista Coolant Sigma",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Cyclotron Ballista",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.1,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPBLOBCOOL2",
+		"name":"Cyclotron Ballista Coolant Tau",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Cyclotron Ballista",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.4,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
+	{
+		"id":"SHIPBLOBCOOL3",
+		"name":"Cyclotron Ballista Coolant Theta",
+		"core":false,
+		"lesser":false,
+		"category":"Starship",
+		"group":"Cyclotron Ballista",
+		"stats":[
+			{
+				"stat":"Ship_Weapons_Guns_HeatTime",
+				"value":1.6,
+				"type":"multiplicative",
+				"hasBonus":true
+			}
+		]
+	},
 	{"id":"RAILDMG1"},
 	{"id":"RAILDMG2"},
 	{"id":"RAILDMG3"},
