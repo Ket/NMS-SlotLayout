@@ -41,6 +41,7 @@
 		</style>
 		<script src="assets/jquery-3.2.1.js"></script>
 		<script src="assets/jquery-ui.js"></script>
+		<script src="assets/jquery.ui.touch-punch.min"></script>
 	</head>
 	<body>
 		<div id="content">
@@ -214,7 +215,8 @@
 			});
 			$( ".module" ).draggable({
 				snap: ".slotArea",
-				snapMode: "inner"
+				snapMode: "inner",
+				revert: "invalid"
 			});
 		}
 		function updateStats(){
@@ -253,10 +255,6 @@
 			}
 		}
 		createSlots(maxX,maxY);
-		$( ".module" ).draggable({
-			snap: ".slotArea",
-			snapMode: "inner"
-		});
 		$(".slotArea").droppable({
 			tolerance: "fit",
 			greedy: true,
