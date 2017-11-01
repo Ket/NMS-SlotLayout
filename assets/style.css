@@ -37,3 +37,10 @@
 	top:105px;
 	left:20px;
 }
+.modulePopup{
+	z-index:5;
+	position:absolute;
+	background-color: white;
+	border: solid 2px;
+	padding: 5px;
+}

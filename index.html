@@ -83,6 +83,7 @@
 		var offsetX = 200;
 		var offsetY = 0;
 		var slots = createArray(maxX,maxY);
+		var calculatedModules = [];
 		
 		function calcAdjacent(stat,type,lesser){
 			if (lesser){
@@ -191,6 +192,7 @@
 		}
 		function updateStats(){
 			var modules = calculateStats(slots);
+			calculatedModules = modules.filter(function (el){return typeof el.id !== "undefined"});
 			$("#statsList").empty();
 			for (var i = 0; i < modules.length; i++){
 				currentModule = modules[i];
@@ -293,6 +295,34 @@
 				updateStats();
 			}
 		});
+		$(document).on({
+			mouseenter: function (e) {
+				if(!$(this).hasClass("ui-draggable-dragging")){
+					currentModule = getById(calculatedModules, $(this).data().id);
+					var popup = $('<div id="modulePopup" class="modulePopup"></div>');
+					popup.append("<h3>"+currentModule.group+"</h3>");
+					for (var i = 0, len = currentModule.stats.length; i < len;i++) {
+						statValue = Math.round((currentModule.stats[i].value + 0.00001) * 100) / 100;
+						statBonus = Math.round((currentModule.stats[i].bonus + 0.00001) * 100) / 100;
+						if (statBonus){
+							statValueString = statValue + " +" +statBonus;
+						} else {
+							statValueString = statValue;
+						}
+						popup.append("<p>"+currentModule.stats[i].stat+": "+statValueString+"</p>");
+					}
+					
+					$("body").append(popup);
+					$("#modulePopup")
+						.css("top",($(this).offset().top+e.offsetY+5) + "px")
+						.css("left",($(this).offset().left+e.offsetX+5) + "px")
+						.fadeIn("fast");
+				}
+			},
+			mouseleave: function (e) {
+				$("#modulePopup").remove();
+			}
+		}, ".module.placed");
 		</script>
 	</body>
 </html>
