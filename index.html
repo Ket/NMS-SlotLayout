@@ -325,9 +325,15 @@
 						.css("top",($(this).offset().top+e.offsetY+5) + "px")
 						.css("left",($(this).offset().left+e.offsetX+5) + "px")
 						.fadeIn("fast");
+					$(".module.placed").off('mousemove').on('mousemove',function(e){
+						$("#modulePopup")
+							.css("top",($(this).offset().top+e.offsetY+5) + "px")
+							.css("left",($(this).offset().left+e.offsetX+5) + "px");
+					  });
 				}
 			},
 			mouseleave: function (e) {
+				$(".module.placed").off('mousemove');
 				$("#modulePopup").remove();
 			}
 		}, ".module.placed");
