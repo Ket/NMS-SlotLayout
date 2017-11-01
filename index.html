@@ -254,6 +254,25 @@
 			currentSlot.parent().css("border-color","lightgreen");
 			currentSlot.addClass("used");
 		}
+		function refreshPopup(module){
+			$("#modulePopup").remove();
+			currentModule = getById(calculatedModules, module.data().id);
+			var popup = $('<div id="modulePopup" class="modulePopup"></div>');
+			popup.append("<h4>"+currentModule.group+"</h4>");
+			popup.append("<h5>"+currentModule.name+"</h5>");
+			for (var i = 0, len = currentModule.stats.length; i < len;i++) {
+				statValue = Math.round((currentModule.stats[i].value + 0.00001) * 100) / 100;
+				statBonus = Math.round((currentModule.stats[i].bonus + 0.00001) * 100) / 100;
+				if (statBonus){
+					statValueString = statValue + " +" +statBonus;
+				} else {
+					statValueString = statValue;
+				}
+				popup.append("<p>"+currentModule.stats[i].stat+": "+statValueString+"</p>");
+			}
+			
+			$("body").append(popup);
+		}
 		createSlots(maxX,maxY);
 		$(".slotArea").droppable({
 			tolerance: "fit",
@@ -285,6 +304,7 @@
 				removeFromSlot(ui.draggable,droppable);
 				addToSlot(ui.draggable,droppable);
 				updateStats();
+				refreshPopup(ui.draggable);
 			}
 		});
 		$(".slotArea").on("dblclick", function(e){
@@ -300,27 +320,14 @@
 			drop: function(e, ui){
 				removeFromSlot(ui.draggable,$(this));
 				updateStats();
+				$(".module.placed").off('mousemove');
+				$("#modulePopup").remove();
 			}
 		});
 		$(document).on({
 			mouseenter: function (e) {
 				if(!$(this).hasClass("ui-draggable-dragging")){
-					currentModule = getById(calculatedModules, $(this).data().id);
-					var popup = $('<div id="modulePopup" class="modulePopup"></div>');
-					popup.append("<h4>"+currentModule.group+"</h4>");
-					popup.append("<h5>"+currentModule.name+"</h5>");
-					for (var i = 0, len = currentModule.stats.length; i < len;i++) {
-						statValue = Math.round((currentModule.stats[i].value + 0.00001) * 100) / 100;
-						statBonus = Math.round((currentModule.stats[i].bonus + 0.00001) * 100) / 100;
-						if (statBonus){
-							statValueString = statValue + " +" +statBonus;
-						} else {
-							statValueString = statValue;
-						}
-						popup.append("<p>"+currentModule.stats[i].stat+": "+statValueString+"</p>");
-					}
-					
-					$("body").append(popup);
+					refreshPopup($(this));
 					$("#modulePopup")
 						.css("top",($(this).offset().top+e.offsetY+5) + "px")
 						.css("left",($(this).offset().left+e.offsetX+5) + "px")
