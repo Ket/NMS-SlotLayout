@@ -182,7 +182,7 @@
 				$("#moduleList").append(module);
 			});
 			$( ".module" ).draggable({
-				snap: ".slotArea",//:not(.used)",
+				snap: ".slotArea:not(.locked)",//:not(.used)",
 				snapMode: "inner",
 				revert: "invalid",
 				snapTolerance: 20,
@@ -276,6 +276,15 @@
 				removeFromSlot(ui.draggable,droppable);
 				addToSlot(ui.draggable,droppable);
 				updateStats();
+			}
+		});
+		$(".slotArea").on("dblclick", function(e){
+			if($(this).droppable("option","scope") === "locked"){
+				$(this).removeClass("locked");
+				$(this).droppable("option","scope","default");
+			} else {
+				$(this).addClass("locked");
+				$(this).droppable("option","scope","locked");
 			}
 		});
 		$("#content").droppable({

@@ -16,6 +16,9 @@
 	height: 100px;
 	background: grey;
 }
+.slotArea.locked {
+	background: #eeeeee;
+}
 .slotBorder{
 	position:absolute;
 	border-width: 2px;
