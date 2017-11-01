@@ -2229,7 +2229,7 @@
 	},
 	{
 		"id":"GRENRAD2",
-		"name":"Damage Radius",
+		"name":"Damage Radius Tau",
 		"core":false,
 		"lesser":false,
 		"category":"Multi-tool",
