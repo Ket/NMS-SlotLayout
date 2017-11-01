@@ -194,6 +194,7 @@
 			var modules = calculateStats(slots);
 			calculatedModules = modules.filter(function (el){return typeof el.id !== "undefined"});
 			$("#statsList").empty();
+			$("#statsList").append("<h3>Total Stats:</h3>")
 			for (var i = 0; i < modules.length; i++){
 				currentModule = modules[i];
 				if (typeof currentModule !== "undefined"){
@@ -216,7 +217,7 @@
 							combinedStats[groupStats[j].stat] = (combinedStats[groupStats[j].stat] ? combinedStats[groupStats[j].stat] : 0) + (groupStats[j].value + groupStats[j].bonus);
 						}
 					}
-					$("#statsList").append("<h3>"+currentModule.group+"</h3>");
+					$("#statsList").append("<h4>"+currentModule.group+"</h4>");
 					for (var key in combinedStats) {
 						if (combinedStats.hasOwnProperty(key)) {
 							stat = Math.round((combinedStats[key] + 0.00001) * 100) / 100;
@@ -300,7 +301,7 @@
 				if(!$(this).hasClass("ui-draggable-dragging")){
 					currentModule = getById(calculatedModules, $(this).data().id);
 					var popup = $('<div id="modulePopup" class="modulePopup"></div>');
-					popup.append("<h3>"+currentModule.group+"</h3>");
+					popup.append("<h4>"+currentModule.group+"</h4>");
 					for (var i = 0, len = currentModule.stats.length; i < len;i++) {
 						statValue = Math.round((currentModule.stats[i].value + 0.00001) * 100) / 100;
 						statBonus = Math.round((currentModule.stats[i].bonus + 0.00001) * 100) / 100;
