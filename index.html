@@ -109,8 +109,8 @@
 		}
 		function calculateStats(slots){
 			var activeModules = [];
-			for (var i = 0; i < maxY;i++){
-				for (var j = 0; j < maxX;j++){
+			for (var i = 0; i < maxX;i++){
+				for (var j = 0; j < maxY;j++){
 					if (slots[i] && slots[i][j]){
 						currentModule = getById(moduleSet,slots[i][j]);
 						for (var k = 0; k < currentModule.stats.length;k++){
