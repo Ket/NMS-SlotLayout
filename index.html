@@ -259,16 +259,18 @@
 							return false;
 						}
 					});
-					removeFromSlot(oldModule,droppable);
-					if (getById(moduleSet, oldModule.data().id).group === $("#groupDropdown").val()){
-						var index = oldModule.data().listIndex;
-						if (index % 2 === 0){
-							oldModule.css({top:index/2*105, left:0});
+					if (oldModule.data().id !== ui.draggable.data().id){
+						removeFromSlot(oldModule,droppable);
+						if (getById(moduleSet, oldModule.data().id).group === $("#groupDropdown").val()){
+							var index = oldModule.data().listIndex;
+							if (index % 2 === 0){
+								oldModule.css({top:index/2*105, left:0});
+							} else {
+								oldModule.css({top:(index-1)/2*105, left:105});
+							}
 						} else {
-							oldModule.css({top:(index-1)/2*105, left:105});
+							oldModule.remove();
 						}
-					} else {
-						oldModule.remove();
 					}
 				}
 				removeFromSlot(ui.draggable,droppable);
