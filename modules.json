@@ -12,7 +12,7 @@
 		"id":"ENERGY",
 		"name":"Life Support",
 		"core":true,
-		"lesser":false,
+		"lesser":true,
 		"category":"Exosuit",
 		"group":"Life Support",
 		"stats":[
@@ -20,7 +20,7 @@
 				"stat":"Suit_Energy",
 				"value":1,
 				"type":"additive",
-				"hasBonus":false
+				"hasBonus":true
 			}
 		]
 	},
@@ -100,7 +100,7 @@
 				"stat":"Suit_Underwater",
 				"value":38,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 	},
@@ -116,7 +116,7 @@
 				"stat":"Suit_Underwater",
 				"value":75,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 	},
@@ -132,7 +132,7 @@
 				"stat":"Suit_Underwater",
 				"value":150,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 		
@@ -149,7 +149,7 @@
 				"stat":"Suit_Protection_Radiation",
 				"value":75,
 				"type":"additive",
-				"hasBonus":true		
+				"hasBonus":false		
 			}
 		]
 	},
@@ -165,7 +165,7 @@
 				"stat":"Suit_Protection_Radiation",
 				"value":225,
 				"type":"additive",
-				"hasBonus":true		
+				"hasBonus":false		
 			}
 		]
 	},
@@ -181,7 +181,7 @@
 				"stat":"Suit_Protection_Radiation",
 				"value":490,
 				"type":"additive",
-				"hasBonus":true		
+				"hasBonus":false		
 			}
 		]
 	},
@@ -197,7 +197,7 @@
 				"stat":"Suit_Protection_Toxic",
 				"value":75,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 	},
@@ -213,7 +213,7 @@
 				"stat":"Suit_Protection_Toxic",
 				"value":225,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 	},
@@ -229,7 +229,7 @@
 				"stat":"Suit_Protection_Toxic",
 				"value":490,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 	},
@@ -245,7 +245,7 @@
 				"stat":"Suit_Protection_Cold",
 				"value":75,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 	},
@@ -261,7 +261,7 @@
 				"stat":"Suit_Protection_Cold",
 				"value":225,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 	},
@@ -277,7 +277,7 @@
 				"stat":"Suit_Protection_Cold",
 				"value":490,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 	},
@@ -293,7 +293,7 @@
 				"stat":"Suit_Protection_Heat",
 				"value":75,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 	},
@@ -309,7 +309,7 @@
 				"stat":"Suit_Protection_Heat",
 				"value":225,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 	},
@@ -325,7 +325,7 @@
 				"stat":"Suit_Protection_Heat",
 				"value":490,
 				"type":"additive",
-				"hasBonus":true
+				"hasBonus":false
 			}
 		]
 	},
@@ -429,7 +429,7 @@
 		"id":"ENERGYBOOST1",
 		"name":"Life Support Module Sigma",
 		"core":false,
-		"lesser":false,
+		"lesser":true,
 		"category":"Exosuit",
 		"group":"Life Support",
 		"stats":[
@@ -437,7 +437,7 @@
 				"stat":"Suit_Energy",
 				"value":1.5,
 				"type":"additive",
-				"hasBonus":false
+				"hasBonus":true
 			}
 		]
 	},
@@ -445,7 +445,7 @@
 		"id":"ENERGYBOOST2",
 		"name":"Life Support Module Tau",
 		"core":false,
-		"lesser":false,
+		"lesser":true,
 		"category":"Exosuit",
 		"group":"Life Support",
 		"stats":[
@@ -453,7 +453,7 @@
 				"stat":"Suit_Energy",
 				"value":2,
 				"type":"additive",
-				"hasBonus":false
+				"hasBonus":true
 			}
 		]
 	},
@@ -1072,6 +1072,18 @@
 				"value":1.1,
 				"type":"multiplicative",
 				"hasBonus":true
+			},
+			{
+				"stat":"Ship_BoostManeuverability",
+				"value":1.1,
+				"type":"multiplicative",
+				"hasBonus":true
+			},
+			{
+				"stat":"Ship_Maneuverability",
+				"value":1.005,
+				"type":"multiplicative",
+				"hasBonus":true
 			}
 		]
 	},
@@ -1094,6 +1106,18 @@
 				"value":1.15,
 				"type":"multiplicative",
 				"hasBonus":true
+			},
+			{
+				"stat":"Ship_BoostManeuverability",
+				"value":1.15,
+				"type":"multiplicative",
+				"hasBonus":true
+			},
+			{
+				"stat":"Ship_Maneuverability",
+				"value":1.005,
+				"type":"multiplicative",
+				"hasBonus":true
 			}
 		]
 	},
@@ -1114,6 +1138,18 @@
 			{
 				"stat":"Ship_Boost",
 				"value":1.15,
+				"type":"multiplicative",
+				"hasBonus":true
+			},
+			{
+				"stat":"Ship_BoostManeuverability",
+				"value":1.15,
+				"type":"multiplicative",
+				"hasBonus":true
+			},
+			{
+				"stat":"Ship_Maneuverability",
+				"value":1.005,
 				"type":"multiplicative",
 				"hasBonus":true
 			}
@@ -1300,6 +1336,12 @@
 				"value":5,
 				"type":"additive",
 				"hasBonus":true
+			},
+			{
+			"stat":"Weapon_Laser_Recoil",
+				"value":3,
+				"type":"multiplicative",
+				"hasBonus":true
 			}
 		]
 	},
@@ -1382,10 +1424,16 @@
 				"hasBonus":true
 			},
 			{
+				"stat":"Weapon_Projectile_Recoil",
+				"value":80,
+				"type":"multiplicative",
+				"hasBonus":true
+			},
+			{
 				"stat":"Weapon_Projectile_ReloadTime",
 				"value":1.2,
 				"type":"multiplicative",
-				"hasBonus":false
+				"hasBonus":true
 			},
 			{
 				"stat":"Weapon_Projectile_Mining_Damage",
@@ -1397,7 +1445,7 @@
 				"stat":"Weapon_Projectile_Dispersion",
 				"value":15,
 				"type":"additive",
-				"hasBonus":false
+				"hasBonus":true
 			}
 		]
 	},
@@ -1428,6 +1476,12 @@
 				"hasBonus":true
 			},
 			{
+				"stat":"Weapon_Projectile_Recoil",
+				"value":30,
+				"type":"multiplicative",
+				"hasBonus":true
+			},
+			{
 				"stat":"Weapon_Projectile_ReloadTime",
 				"value":1,
 				"type":"multiplicative",
@@ -1443,7 +1497,7 @@
 				"stat":"Weapon_Projectile_Dispersion",
 				"value":6,
 				"type":"additive",
-				"hasBonus":false
+				"hasBonus":true
 			}
 		]
 	},
@@ -1855,7 +1909,7 @@
 				"stat":"Weapon_Projectile_Recoil",
 				"value":1.2,
 				"type":"multiplicative",
-				"hasBonus":false
+				"hasBonus":true
 			},
 			{
 				"stat":"Weapon_Projectile_Dispersion",
@@ -1883,7 +1937,7 @@
 				"stat":"Weapon_Projectile_Recoil",
 				"value":1.4,
 				"type":"multiplicative",
-				"hasBonus":false
+				"hasBonus":true
 			},
 			{
 				"stat":"Weapon_Projectile_Dispersion",
@@ -1911,7 +1965,7 @@
 				"stat":"Weapon_Projectile_Recoil",
 				"value":1.6,
 				"type":"multiplicative",
-				"hasBonus":false
+				"hasBonus":true
 			},
 			{
 				"stat":"Weapon_Projectile_Dispersion",
