@@ -1701,7 +1701,7 @@
 	},
 	{
 		"id":"LASCOOL2",
-		"name":"Beam Coolant System Sigma",
+		"name":"Beam Coolant System Tau",
 		"core":false,
 		"lesser":false,
 		"category":"Multi-tool",
@@ -1717,7 +1717,7 @@
 	},
 	{
 		"id":"LASCOOL3",
-		"name":"Beam Coolant System Sigma",
+		"name":"Beam Coolant System Theta",
 		"core":false,
 		"lesser":false,
 		"category":"Multi-tool",
