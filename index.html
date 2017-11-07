@@ -112,7 +112,7 @@
 		}
 		function getById(arr, value) {
 			for (var i=0, iLen=arr.length; i<iLen; i++) {
-			  if (arr[i].id === value){
+			  if (arr[i].shortId === value){
 				arr[i].index = i;  
 				return arr[i];
 			  }
@@ -183,7 +183,8 @@
 			$.each(groupSet, function(index, value) {
 				if (value.placed !== true){
 					var module = $('<div class="module"></div>');
-					module.data("id",value.id);
+					console.log(value);
+					module.data("id",value.shortId);
 					module.text(value.name);
 					module.data("listIndex",index);
 					if (index % 2 === 0){
@@ -204,7 +205,7 @@
 		}
 		function updateStats(){
 			var modules = calculateStats(slots);
-			calculatedModules = modules.filter(function (el){return typeof el.id !== "undefined"});
+			calculatedModules = modules.filter(function (el){return typeof el.shortId !== "undefined"});
 			$("#statsList").empty();
 			$("#statsList").append("<h3>Total Stats:</h3>")
 			for (var i = 0; i < modules.length; i++){
