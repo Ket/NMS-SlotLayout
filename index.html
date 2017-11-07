@@ -183,7 +183,6 @@
 			$.each(groupSet, function(index, value) {
 				if (value.placed !== true){
 					var module = $('<div class="module"></div>');
-					console.log(value);
 					module.data("id",value.shortId);
 					module.text(value.name);
 					module.data("listIndex",index);
