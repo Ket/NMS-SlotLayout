@@ -25,6 +25,7 @@
 			<div id="statsList"></div>
 		</div>
 		<script>
+		params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v;});
 		$.getJSON("modules.json", function(data){
 			moduleSet = data;
 			var flags = [], categories = [], l = moduleSet.length, i;
@@ -71,6 +72,9 @@
 					});
 				}
 			});
+			if (typeof params['slots'] !== "undefined"){
+				importSlots(params["slots"]);
+			}
 			updateStats();
 		});
 		function createArray(length) {
@@ -173,20 +177,22 @@
 		}
 		function createModules(group){
 			groupSet = moduleSet.filter(function (module){
-				return (module.group === group && module.placed != true);
+				return (module.group === group);
 			});
 			$("#moduleList").children().not(".placed").remove();
 			$.each(groupSet, function(index, value) {
-				var module = $('<div class="module"></div>');
-				module.data("id",value.id);
-				module.text(value.name);
-				module.data("listIndex",index);
-				if (index % 2 === 0){
-					module.css({top:index/2*105, left:0});
-				} else {
-					module.css({top:(index-1)/2*105, left:105});
+				if (value.placed !== true){
+					var module = $('<div class="module"></div>');
+					module.data("id",value.id);
+					module.text(value.name);
+					module.data("listIndex",index);
+					if (index % 2 === 0){
+						module.css({top:index/2*105+105, left:0+20});
+					} else {
+						module.css({top:(index-1)/2*105+105, left:105+20});
+					}
+					$("#moduleList").append(module);
 				}
-				$("#moduleList").append(module);
 			});
 			$( ".module" ).draggable({
 				snap: ".slotArea:not(.locked)",//:not(.used)",
@@ -273,38 +279,107 @@
 			
 			$("body").append(popup);
 		}
+		function updateUrl(){
+			var urlSlots = "";
+			for (var i = 0;i< slots.length;i++){
+				for (var j = 0; j < slots[i].length; j++){
+					if(typeof slots[i][j] !== "undefined" && slots[i][j] !== ""){
+						urlSlots += String.fromCharCode(97+i) + (j+1) + slots[i][j] + ",";
+					}
+				}
+			}
+			urlSlots = urlSlots.slice(0,-1);
+			if (urlSlots !== ""){
+				history.replaceState({}, document.getElementsByTagName("title")[0].innerHTML, "index.html?slots="+urlSlots);
+			} else {
+				history.replaceState({}, document.getElementsByTagName("title")[0].innerHTML, "index.html");
+			}			
+		}
+		function createModule(id){
+			filteredSet = moduleSet.filter(function (module){
+				return (module.placed !== true);
+			});
+			moduleData = getById(filteredSet,id);
+			if (typeof moduleData === "undefined"){
+				return false;
+			}
+			groupSet = moduleSet.filter(function (module){
+				return (module.group === moduleData.group);
+			});
+			index  = getById(groupSet, id).index;
+			var module = $('<div class="module"></div>');
+			module.data("id",moduleData.id);
+			module.text(moduleData.name);
+			module.data("listIndex",index);
+			$("#moduleList").append(module);
+			
+			$( ".module" ).draggable({
+				snap: ".slotArea:not(.locked)",//:not(.used)",
+				snapMode: "inner",
+				revert: "invalid",
+				snapTolerance: 20,
+				zIndex:2
+			});
+			return module;
+		}
+		function createModuleAtSlot(x,y,id){
+			module = createModule(id);
+			if (module === false){
+				return false;
+			}
+			droppable = $("#slotX"+x+"Y"+y);
+			dropAtSlot(droppable,module);
+			module.css({top:droppable.offset().top, left:droppable.offset().left});
+			return module;
+		}
+		function importSlots(slotImport){
+			if (typeof slotImport !== "undefined"){
+				var importedArray = slotImport.split(',');
+				for (var i = 0;i<importedArray.length;i++){
+					var x = parseInt(importedArray[i].substr(0,1),36)-9;
+					var y = importedArray[i].substr(1,1);
+					var id = importedArray[i].substr(2);
+					createModuleAtSlot(x-1,y-1,id);
+				}
+				return true;
+			}
+			return false;
+		}
+		function dropAtSlot(droppable, draggable){
+			if (droppable.hasClass("used")){
+				var oldModule;
+				$(".module.placed").each(function(){
+					if (($(this).data().x ===  droppable.data().x) && ($(this).data().y ===  droppable.data().y)){
+						oldModule = $(this);
+						return false;
+					}
+				});
+				if (oldModule.data().id !== draggable.data().id){
+					removeFromSlot(oldModule,droppable);
+					if (getById(moduleSet, oldModule.data().id).group === $("#groupDropdown").val()){
+						var index = oldModule.data().listIndex;
+						if (index % 2 === 0){
+							oldModule.css({top:index/2*105, left:0});
+						} else {
+							oldModule.css({top:(index-1)/2*105, left:105});
+						}
+					} else {
+						oldModule.remove();
+					}
+				}
+			}
+			removeFromSlot(draggable,droppable);
+			addToSlot(draggable,droppable);
+			updateStats();
+			refreshPopup(draggable);
+		}
 		createSlots(maxX,maxY);
 		$(".slotArea").droppable({
 			tolerance: "fit",
 			greedy: true,
 			drop: function(e, ui){
-				droppable = $(this);
-				if (droppable.hasClass("used")){
-					var oldModule;
-					$(".module.placed").each(function(){
-						if (($(this).data().x ===  droppable.data().x) && ($(this).data().y ===  droppable.data().y)){
-							oldModule = $(this);
-							return false;
-						}
-					});
-					if (oldModule.data().id !== ui.draggable.data().id){
-						removeFromSlot(oldModule,droppable);
-						if (getById(moduleSet, oldModule.data().id).group === $("#groupDropdown").val()){
-							var index = oldModule.data().listIndex;
-							if (index % 2 === 0){
-								oldModule.css({top:index/2*105, left:0});
-							} else {
-								oldModule.css({top:(index-1)/2*105, left:105});
-							}
-						} else {
-							oldModule.remove();
-						}
-					}
-				}
-				removeFromSlot(ui.draggable,droppable);
-				addToSlot(ui.draggable,droppable);
-				updateStats();
-				refreshPopup(ui.draggable);
+				dropAtSlot($(this),ui.draggable);
+				updateUrl();
 			}
 		});
 		$(".slotArea").on("dblclick", function(e){
@@ -322,6 +397,7 @@
 				updateStats();
 				$(".module.placed").off('mousemove');
 				$("#modulePopup").remove();
+				updateUrl();
 			}
 		});
 		$(document).on({
