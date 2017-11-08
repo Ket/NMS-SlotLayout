@@ -7,8 +7,14 @@
 	height: 118px;
 	background: rgb(9, 91, 119);
 	position:absolute;
-	z-index: 1;
+	z-index: 2;
 	border:solid 3px;
+}
+.module.placed {
+	z-index: 1;
+}
+.module.ui-draggable-dragging {
+	z-index: 3;
 }
 .slotArea {
 	width: 104px;
