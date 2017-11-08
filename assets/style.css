@@ -16,11 +16,11 @@
 	background: lightgrey;
 }
 .slotArea.locked {
-	background: white;
+	background: #4d72a9;
 }
 .slotBorder{
 	position:absolute;
-	border-width: 2px;
+	border-width: 4px;
 	border-style: solid;
 }
 .modulePopup{
@@ -105,4 +105,12 @@
 	top:105px;
 }
 #moduleList{
+}
+#background{
+	background-color: #4d72a9;
+    width: 887px;
+    height: 1180px;
+    left: 300px;
+    top: 100px;
+    position: absolute;
 }
