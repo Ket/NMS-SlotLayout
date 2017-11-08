@@ -26,6 +26,66 @@
 		</div>
 		<script>
 		params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v;});
+		var statNames = {
+			"base_mult":"Damage Multiplier",
+			"base_rate":"Fire Rate",
+			"laser_count":"Laser Count",
+			"Suit_Protection_Radiation":"Radiation Protection",
+			"Suit_Protection_Toxic":"Toxic Protection",
+			"Suit_Protection_Cold":"Cold Protection",
+			"Suit_Protection_Heat":"Heat Protection",
+			"Suit_Energy":"Energy",
+			"Suit_Jetpack_Tank":"Jetpack Tanks",
+			"Suit_Underwater":"Oxygen Tank",
+			"Suit_Armour_Shield_Strength":"Shield Strength",
+			"Suit_Stamina_Strength":"Run Distance",
+			"Suit_Armour_Health":"Health",
+			"Ship_Weapons_Lasers_HeatTime":"Heat Time",
+			"Ship_Weapons_Lasers_Damage":"Damage",
+			"Ship_Weapons_Guns_Rate":"Fire Rate",
+			"Ship_Weapons_Guns_HeatTime":"Heat Time",
+			"Ship_Weapons_Guns_Damage":"Damage",
+			"Ship_Weapons_Guns_Dispersion":"Spread",
+			"Ship_Weapons_Guns_BulletsPerShot":"Projectiles per Shot",
+			"Ship_Weapons_Guns_Range":"Range",
+			"Ship_Armour_Shield_Strength":"Shield Strength",
+			"Ship_PulseDrive_MiniJumpFuelSpending":"Pulsedrive Power",
+			"Ship_Boost":"Boost",
+			"Ship_BoostManeuverability":"Boost Maneuverability",
+			"Ship_Maneuverability":"Maneuverability",
+			"Ship_Hyperdrive_JumpDistance":"Hyperdrive Range",
+			"Freighter_Hyperdrive_JumpDistance":"Hyperdrive Range",
+			"Weapon_Laser_Mining_Speed":"Mining Speed",
+			"Weapon_Laser_HeatTime":"Heat Time",
+			"Weapon_Laser_Mining_Damage":"Mining Power",
+			"Weapon_Laser_Damage":"Damage",
+			"Weapon_Laser_Recoil":"Recoil",
+			"Weapon_Projectile_Damage":"Damage",
+			"Weapon_Projectile_Rate":"Fire Rate",
+			"Weapon_Projectile_ClipSize":"Clip Size",
+			"Weapon_Projectile_Recoil":"Recoil",
+			"Weapon_Projectile_ReloadTime":"Reload Time",
+			"Weapon_Projectile_Mining_Damage":"Mining Power",
+			"Weapon_Projectile_Dispersion":"Spread",
+			"Weapon_Projectile_BulletsPerShot":"Projectiles per Shot",
+			"Weapon_Projectile_Range":"Range",
+			"Weapon_Projectile_Homing":"Homing",
+			"Weapon_Projectile_Bounce":"Ricochet",
+			"Weapon_Grenade_Damage":"Damage",
+			"Weapon_Grenade_Radius":"Explosion Radius",
+			"Weapon_Grenade_Homing":"Homing",
+			"Weapon_Grenade_Bounce":"Bounce",
+			"Weapon_Grenade_Speed":"Projectile Velocity",
+			"Weapon_Scan_Radius":"Scan Radius",
+			"Weapon_Scan_Discovery_Creature":"Fauna Scan Multiplier",
+			"Weapon_Scan_Discovery_Flora":"Flora Scan Multiplier",
+			"Ship_Scan_EconomyFilter":"Economy Filter",
+			"Ship_Scan_ConflictFilter":"Conflict Filter",
+			"Suit_Protection":"Protection",
+			"Ship_Launcher":"Launcher",
+			"Weapon_TerrainEdit":"Terrain Edit"
+			
+		}
 		$.getJSON("modules.json", function(data){
 			moduleSet = data;
 			var flags = [], categories = [], l = moduleSet.length, i;
@@ -91,7 +151,7 @@
 		var maxX = 8;
 		var maxY = 9;
 		var offsetX = 200;
-		var offsetY = 0;
+		var offsetY = -20;
 		var slots = createArray(maxX,maxY);
 		var calculatedModules = [];
 		
@@ -237,7 +297,7 @@
 					for (var key in combinedStats) {
 						if (combinedStats.hasOwnProperty(key)) {
 							stat = Math.round((combinedStats[key] + 0.00001) * 100) / 100;
-							$("#statsList").append("<p>"+key+": "+stat+"</p>");
+							$("#statsList").append("<div>"+(statNames[key] || key)+": "+stat+"</div>");
 						}
 					}
 				}
@@ -278,7 +338,8 @@
 				} else {
 					statValueString = statValue;
 				}
-				popup.append("<p>"+currentModule.stats[i].stat+": "+statValueString+"</p>");
+				var statName = (statNames[currentModule.stats[i].stat] || currentModule.stats[i].stat);
+				popup.append("<div>"+statName+": "+statValueString+"</div>");
 			}
 			
 			$("body").append(popup);
