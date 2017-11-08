@@ -184,6 +184,7 @@
 				if (value.placed !== true){
 					var module = $('<div class="module"></div>');
 					module.data("id",value.shortId);
+					module.addClass(value.group.replace(" ","-"));
 					module.append("<div class='moduleName'>"+value.shortName+"</div>");
 					module.data("listIndex",index);
 					if (index % 2 === 0){
@@ -311,6 +312,7 @@
 			});
 			index  = getById(groupSet, id).index;
 			var module = $('<div class="module"></div>');
+			module.addClass(moduleData.group.replace(" ","-"));
 			module.data("id",moduleData.shortId);
 			module.append("<div class='moduleName'>"+moduleData.shortName+"</div>");
 			module.data("listIndex",index);

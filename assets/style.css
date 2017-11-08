@@ -45,6 +45,51 @@
 	width:98px;
 	height:98px;
 }
+.Phase-Beam{
+	background-color: rgb(91, 148, 81);
+}
+.Cyclotron-Ballista{
+	background-color: rgb(123, 68, 97);
+}
+.Photon-Cannon{
+	background-color: rgb(12, 129, 167);
+}
+.Positron-Ejector{
+    background-color: rgb(255, 190, 55);
+}
+.Infra-Knife-Accelerator{
+	background-color: rgb(233, 78, 78);
+}
+.Rocket-Launcher{
+	background-color: rgb(123, 68, 97);
+}
+.Hyperdrive{
+	background-color: rgb(33, 119, 199);
+}
+.Freighter-Hyperdrive{
+	background-color: rgb(33, 119, 199);
+}
+.Ship-Scanner{
+	background-color: rgb(33, 119, 199);
+}
+.Mining-Beam{
+	background-color: rgb(91, 148, 81);
+}
+.Boltcaster{
+	background-color: rgb(12, 129, 167);
+}
+.Plasma-Launcher{
+	background-color: rgb(56, 180, 189);
+}
+.Blaze-Javelin{
+	background-color: rgb(233, 78, 78);
+}
+.Scatter-Blaster{
+	background-color: rgb(255, 190, 55);
+}
+.Pulse-Spitter{
+	background-color: rgb(25, 187, 120);
+}
 #infoBox{
 	position:absolute;
 	top:10px;
