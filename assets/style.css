@@ -42,7 +42,10 @@
 	position:absolute;
 	background-color: white;
 	border: solid 2px;
-	padding: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	padding-right: 5px;
+	min-width:200px;
 }
 .moduleName{
 	width:94px;
@@ -108,10 +111,10 @@
 	position:absolute;
 	top:10px;
 	left:305px;
-	width:840px;
+	width:877px;
 }
 #statsList{
-	width: 310px;
+	width: 200px;
 	border: solid 1px;
 	padding: 5px;
 	position:absolute;
@@ -119,12 +122,4 @@
 	top:105px;
 }
 #moduleList{
-}
-#background{
-	background-color: #4d72a9;
-    width: 887px;
-    height: 1180px;
-    left: 300px;
-    top: 100px;
-    position: absolute;
 }

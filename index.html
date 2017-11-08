@@ -521,8 +521,8 @@
 						offsetY += e.target.offsetTop;
 					}
 					$("#modulePopup")
-						.css("top",($(this).offset().top+offsetY+5) + "px")
-						.css("left",($(this).offset().left+offsetX+5) + "px")
+						.css("top",($(this).offset().top+offsetY+10) + "px")
+						.css("left",($(this).offset().left+offsetX+10) + "px")
 						.fadeIn("fast");
 					$(".module.placed").off('mousemove').on('mousemove',function(e){
 						var offsetX = e.offsetX;
@@ -532,8 +532,8 @@
 							offsetY += e.target.offsetTop;
 						}
 						$("#modulePopup")
-							.css("top",($(this).offset().top+offsetY+5) + "px")
-							.css("left",($(this).offset().left+offsetX+5) + "px");
+							.css("top",($(this).offset().top+offsetY+10) + "px")
+							.css("left",($(this).offset().left+offsetX+10) + "px");
 					  });
 				}
 			},
