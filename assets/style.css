@@ -3,21 +3,20 @@
 	min-width: 1520px;
 }
 .module {
-	width: 100px;
-	height: 100px;
-	background: orange;
+	width: 98px;
+	height: 118px;
+	background: rgb(9, 91, 119);
 	position:absolute;
 	z-index: 1;
-	text-align: center;
-	vertical-align: middle;
+	border:solid 1px;
 }
 .slotArea {
 	width: 100px;
-	height: 100px;
-	background: grey;
+	height: 120px;
+	background: lightgrey;
 }
 .slotArea.locked {
-	background: #eeeeee;
+	background: white;
 }
 .slotBorder{
 	position:absolute;
@@ -30,6 +29,21 @@
 	background-color: white;
 	border: solid 2px;
 	padding: 5px;
+}
+.moduleName{
+	width:94px;
+	height:20px;
+	overflow:hidden;
+	white-space: nowrap;
+	margin: 0px;
+	padding-left:4px;
+	background-color:grey;
+	color:white;
+	text-align: center;
+}
+.moduleIcon{
+	width:98px;
+	height:98px;
 }
 #infoBox{
 	position:absolute;

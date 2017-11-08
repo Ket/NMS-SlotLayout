@@ -170,7 +170,7 @@
 			for (var i = 0; i < y;i++){
 				for (var j = 0; j < x;j++){
 					if (i !== 6){
-						$("#slotsDiv").append("<div class='slotBorder' style='top:"+(((i+1)*105)+offsetY)+"px; left:"+(((j+1)*105)+offsetX)+"px;'><div id=slotX"+j+"Y"+i+" class='slotArea' data-x="+j+" data-y="+i+"></div></div>");
+						$("#slotsDiv").append("<div class='slotBorder' style='top:"+(((i+1)*125)+offsetY)+"px; left:"+(((j+1)*105)+offsetX)+"px;'><div id=slotX"+j+"Y"+i+" class='slotArea' data-x="+j+" data-y="+i+"></div></div>");
 					}
 				}
 			}
@@ -184,12 +184,15 @@
 				if (value.placed !== true){
 					var module = $('<div class="module"></div>');
 					module.data("id",value.shortId);
-					module.text(value.name);
+					module.append("<div class='moduleName'>"+value.shortName+"</div>");
 					module.data("listIndex",index);
 					if (index % 2 === 0){
-						module.css({top:index/2*105+105, left:0+20});
+						module.css({top:index/2*125+105, left:0+20});
 					} else {
-						module.css({top:(index-1)/2*105+105, left:105+20});
+						module.css({top:(index-1)/2*125+105, left:105+20});
+					}
+					if (typeof value.icon !== "undefined"){
+						module.append("<img class='moduleIcon' src='icons/"+value.icon + ".png' >");
 					}
 					$("#moduleList").append(module);
 				}
@@ -309,8 +312,11 @@
 			index  = getById(groupSet, id).index;
 			var module = $('<div class="module"></div>');
 			module.data("id",moduleData.shortId);
-			module.text(moduleData.name);
+			module.append("<div class='moduleName'>"+moduleData.shortName+"</div>");
 			module.data("listIndex",index);
+			if (typeof moduleData.icon !== "undefined"){
+				module.append("<img class='moduleIcon' src='icons/"+moduleData.icon + ".png' >");
+			}
 			$("#moduleList").append(module);
 			
 			$( ".module" ).draggable({
@@ -359,9 +365,9 @@
 					if (getById(moduleSet, oldModule.data().id).group === $("#groupDropdown").val()){
 						var index = oldModule.data().listIndex;
 						if (index % 2 === 0){
-							oldModule.css({top:index/2*105, left:0});
+							oldModule.css({top:index/2*125, left:0});
 						} else {
-							oldModule.css({top:(index-1)/2*105, left:105});
+							oldModule.css({top:(index-1)/2*125, left:105});
 						}
 					} else {
 						oldModule.remove();
@@ -371,7 +377,6 @@
 			removeFromSlot(draggable,droppable);
 			addToSlot(draggable,droppable);
 			updateStats();
-			refreshPopup(draggable);
 		}
 		createSlots(maxX,maxY);
 		$(".slotArea").droppable({
@@ -404,14 +409,26 @@
 			mouseenter: function (e) {
 				if(!$(this).hasClass("ui-draggable-dragging")){
 					refreshPopup($(this));
+					var offsetX = e.offsetX;
+					var offsetY = e.offsetY;
+					if (e.target !== this){
+						offsetX += e.target.offsetLeft;
+						offsetY += e.target.offsetTop;
+					}
 					$("#modulePopup")
-						.css("top",($(this).offset().top+e.offsetY+5) + "px")
-						.css("left",($(this).offset().left+e.offsetX+5) + "px")
+						.css("top",($(this).offset().top+offsetY+5) + "px")
+						.css("left",($(this).offset().left+offsetX+5) + "px")
 						.fadeIn("fast");
 					$(".module.placed").off('mousemove').on('mousemove',function(e){
+						var offsetX = e.offsetX;
+						var offsetY = e.offsetY;
+						if (e.target !== this){
+							offsetX += e.target.offsetLeft;
+							offsetY += e.target.offsetTop;
+						}
 						$("#modulePopup")
-							.css("top",($(this).offset().top+e.offsetY+5) + "px")
-							.css("left",($(this).offset().left+e.offsetX+5) + "px");
+							.css("top",($(this).offset().top+offsetY+5) + "px")
+							.css("left",($(this).offset().left+offsetX+5) + "px");
 					  });
 				}
 			},
