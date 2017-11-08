@@ -21,7 +21,7 @@
 				Hover over a placed module to see the individual stats + the bonus from having adjacent modules in the same group.</br>
 				Double click a slot on the layout to disable it
 			</div>
-			<div id="slotsDiv"><div id="background"></div></div>
+			<div id="slotsDiv"></div>
 			<div id="statsList"></div>
 		</div>
 		<script>
@@ -337,7 +337,7 @@
 			if (typeof slots[module.data().x] !== "undefined"){
 				delete slots[module.data().x][module.data().y];
 				var oldSlot = $("#slotX"+module.data().x+"Y"+module.data().y);
-				oldSlot.parent().css("border-color","black");
+				module.css("border-color","black");
 				oldSlot.removeClass("used");
 				module.data("x","");
 				module.data("y","");
@@ -350,7 +350,7 @@
 			module.data("x",currentSlot.data().x);
 			module.data("y",currentSlot.data().y);
 			module.addClass("placed");
-			currentSlot.parent().css("border-color",borderColors[moduleData.group]);
+			module.css("border-color",borderColors[moduleData.group]);
 			currentSlot.addClass("used");
 		}
 		function refreshPopup(module){

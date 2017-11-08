@@ -8,19 +8,19 @@
 	background: rgb(9, 91, 119);
 	position:absolute;
 	z-index: 1;
-	border:solid 1px;
+	border:solid 3px;
 }
 .slotArea {
-	width: 100px;
-	height: 120px;
+	width: 104px;
+	height: 124px;
 	background: lightgrey;
 }
 .slotArea.locked {
-	background: #4d72a9;
+	background: white;
 }
 .slotBorder{
 	position:absolute;
-	border-width: 4px;
+	border-width: 2px;
 	border-style: solid;
 }
 .modulePopup{
