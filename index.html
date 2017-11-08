@@ -283,6 +283,7 @@
 					if (typeof value.icon !== "undefined"){
 						module.append("<img class='moduleIcon' src='icons/"+value.icon + ".png' >");
 					}
+					module.append("<div class='innerBorder'></div>");
 					$("#moduleList").append(module);
 				}
 			});
@@ -408,6 +409,7 @@
 			if (typeof moduleData.icon !== "undefined"){
 				module.append("<img class='moduleIcon' src='icons/"+moduleData.icon + ".png' >");
 			}
+			module.append("<div class='innerBorder'></div>");
 			$("#moduleList").append(module);
 			
 			$( ".module" ).draggable({

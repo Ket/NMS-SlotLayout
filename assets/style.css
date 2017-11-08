@@ -16,6 +16,14 @@
 .module.ui-draggable-dragging {
 	z-index: 3;
 }
+.innerBorder{
+	position:absolute;
+	top: 0px;
+    left: 0px;
+    width: 97px;
+    height: 117px;
+	border: solid black 1px;
+}
 .slotArea {
 	width: 104px;
 	height: 124px;
