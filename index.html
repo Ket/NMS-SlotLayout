@@ -182,31 +182,31 @@
 			var activeModules = [];
 			for (var i = 0; i < maxX;i++){
 				for (var j = 0; j < maxY;j++){
-					if (slots[i] && slots[i][j]){
+					if (slots[i] && slots[i][j] && slots[i][j] !== 'lock'){
 						currentModule = getById(moduleSet,slots[i][j]);
 						for (var k = 0; k < currentModule.stats.length;k++){
 							var stat = currentModule.stats[k];
 							var bonus = 0;
 							if (stat.hasBonus){
-								if (slots[i-1] && slots[i-1][j]){
+								if (slots[i-1] && slots[i-1][j] && slots[i-1][j] !== 'lock'){
 									var adjacent = getById(moduleSet,slots[i-1][j]);
 									if (adjacent.group === currentModule.group){
 										bonus += calcAdjacent(stat.value,stat.type,adjacent.lesser);
 									}
 								}
-								if (slots[i+1] && slots[i+1][j]){
+								if (slots[i+1] && slots[i+1][j] && slots[i+1][j] !== 'lock'){
 									var adjacent = getById(moduleSet,slots[i+1][j]);
 									if (adjacent.group === currentModule.group){
 										bonus += calcAdjacent(stat.value,stat.type,adjacent.lesser);
 									}
 								}
-								if (slots[i][j-1]){
+								if (slots[i][j-1] && slots[i][j-1] !== 'lock'){
 									var adjacent = getById(moduleSet,slots[i][j-1]);
 									if (adjacent.group === currentModule.group){
 										bonus += calcAdjacent(stat.value,stat.type,adjacent.lesser);
 									}
 								}
-								if (slots[i][j+1]){
+								if (slots[i][j+1] && slots[i][j+1] !== 'lock'){
 									var adjacent = getById(moduleSet,slots[i][j+1]);
 									if (adjacent.group === currentModule.group){
 										bonus += calcAdjacent(stat.value,stat.type,adjacent.lesser);
@@ -405,10 +405,16 @@
 			if (typeof slotImport !== "undefined"){
 				var importedArray = slotImport.split(',');
 				for (var i = 0;i<importedArray.length;i++){
-					var x = parseInt(importedArray[i].substr(0,1),36)-9;
-					var y = importedArray[i].substr(1,1);
+					var x = parseInt(importedArray[i].substr(0,1),36)-10;
+					var y = importedArray[i].substr(1,1)-1;
 					var id = importedArray[i].substr(2);
-					createModuleAtSlot(x-1,y-1,id);
+					if (id === 'lock'){
+						slots[x][y] = 'lock';
+						$("#slotX"+x+"Y"+y).addClass("locked");
+						$("#slotX"+x+"Y"+y).droppable("option","scope","locked");
+					} else {
+						createModuleAtSlot(x,y,id);
+					}
 				}
 				return true;
 			}
@@ -451,12 +457,19 @@
 			}
 		});
 		$(".slotArea").on("dblclick", function(e){
-			if($(this).droppable("option","scope") === "locked"){
-				$(this).removeClass("locked");
-				$(this).droppable("option","scope","default");
+			var slot = $(this)
+			if(slot.droppable("option","scope") === "locked"){
+				if (slots[slot.data().x][slot.data().y] === 'lock'){
+					slots[slot.data().x][slot.data().y] = '';
+				}
+				slot.removeClass("locked");
+				slot.droppable("option","scope","default");
+				updateUrl()
 			} else {
-				$(this).addClass("locked");
-				$(this).droppable("option","scope","locked");
+				slots[slot.data().x][slot.data().y] = 'lock';
+				slot.addClass("locked");
+				slot.droppable("option","scope","locked");
+				updateUrl()
 			}
 		});
 		$("#content").droppable({
