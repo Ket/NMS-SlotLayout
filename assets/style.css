@@ -47,6 +47,14 @@
 	padding-right: 5px;
 	min-width:200px;
 }
+.modulePopup h3{
+	margin-top:2px;
+	margin-bottom:2px;
+}
+.modulePopup h4{
+	margin-top:4px;
+	margin-bottom:6px;
+}
 .moduleName{
 	width:94px;
 	height:20px;
@@ -112,6 +120,7 @@
 	top:10px;
 	left:305px;
 	width:877px;
+	line-height: 110%;
 }
 #statsList{
 	min-width: 200px;
@@ -120,6 +129,12 @@
 	position:absolute;
 	left:1200px;
 	top:105px;
+}
+#statsList h3{
+	margin-top:2px;
+}
+#statsList h4{
+	margin-bottom:2px;
 }
 #moduleList{
 }

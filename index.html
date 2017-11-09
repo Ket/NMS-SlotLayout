@@ -358,8 +358,8 @@
 			$("#modulePopup").remove();
 			currentModule = getById(calculatedModules, module.data().id);
 			var popup = $('<div id="modulePopup" class="modulePopup"></div>');
-			popup.append("<h4>"+currentModule.group+"</h4>");
-			popup.append("<h5>"+currentModule.name+"</h5>");
+			popup.append("<h3>"+currentModule.group+"</h3>");
+			popup.append("<h4>"+currentModule.name+"</h4>");
 			for (var i = 0, len = currentModule.stats.length; i < len;i++) {
 				statValue = Math.round((currentModule.stats[i].value + 0.00001) * 100) / 100;
 				statBonus = Math.round((currentModule.stats[i].bonus + 0.00001) * 100) / 100;
