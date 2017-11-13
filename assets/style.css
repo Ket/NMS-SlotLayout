@@ -119,10 +119,8 @@
 	position:absolute;
 	top:10px;
 	left:305px;
-	width:877px;
+	width:1000px;
 	line-height: 100%;
-	-webkit-text-size-adjust: none;
-	-moz-text-size-adjust: none;
 }
 #statsList{
 	min-width: 200px;
