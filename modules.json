@@ -2231,7 +2231,7 @@
       "statIcon":"none",
       "level":1,
       "core":true,
-      "lesser":false,
+      "lesser":true,
       "category":"Multi-tool",
       "group":"Scanner",
       "stats":[
