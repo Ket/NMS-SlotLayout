@@ -750,6 +750,12 @@
             "type":"multiplicative",
             "hasBonus":false
          },
+		 {
+            "stat":"base_cooldown",
+            "value":2,
+            "type":"multiplicative",
+            "hasBonus":false
+         },
          {
             "stat":"laser_count",
             "value":2,
@@ -806,6 +812,18 @@
             "value":1500,
             "type":"additive",
             "hasBonus":false
+         },
+		 {
+            "stat":"base_speed",
+            "value":1800,
+            "type":"additive",
+            "hasBonus":false
+         },
+		 {
+            "stat":"base_cooldown",
+            "value":8,
+            "type":"multiplicative",
+            "hasBonus":false
          }
       ]
    },
@@ -856,6 +874,18 @@
             "stat":"Ship_Weapons_Guns_Range",
             "value":400,
             "type":"additive",
+            "hasBonus":false
+         },
+		 {
+            "stat":"base_speed",
+            "value":2000,
+            "type":"additive",
+            "hasBonus":false
+         },
+		 {
+            "stat":"base_cooldown",
+            "value":1.5,
+            "type":"multiplicative",
             "hasBonus":false
          }
       ]
@@ -908,6 +938,18 @@
             "value":1500,
             "type":"additive",
             "hasBonus":false
+         },
+		 {
+            "stat":"base_speed",
+            "value":2000,
+            "type":"additive",
+            "hasBonus":false
+         },
+		 {
+            "stat":"base_cooldown",
+            "value":8,
+            "type":"multiplicative",
+            "hasBonus":false
          }
       ]
    },
@@ -952,6 +994,18 @@
             "stat":"Ship_Weapons_Guns_Range",
             "value":5000,
             "type":"additive",
+            "hasBonus":false
+         },
+		 {
+            "stat":"base_speed",
+            "value":1000,
+            "type":"additive",
+            "hasBonus":false
+         },
+		 {
+            "stat":"base_cooldown",
+            "value":5,
+            "type":"multiplicative",
             "hasBonus":false
          }
       ]
@@ -1003,6 +1057,18 @@
             "stat":"Ship_Weapons_Guns_Range",
             "value":1500,
             "type":"additive",
+            "hasBonus":false
+         },
+		 {
+            "stat":"base_speed",
+            "value":500,
+            "type":"additive",
+            "hasBonus":false
+         },
+		 {
+            "stat":"base_cooldown",
+            "value":1.5,
+            "type":"multiplicative",
             "hasBonus":false
          }
       ]
@@ -1937,6 +2003,12 @@
             "value":1500,
             "type":"additive",
             "hasBonus":false
+         },
+		 {
+            "stat":"base_speed",
+            "value":100,
+            "type":"additive",
+            "hasBonus":false
          }
       ]
    },
@@ -2004,6 +2076,12 @@
          {
             "stat":"Weapon_Projectile_Range",
             "value":150,
+            "type":"additive",
+            "hasBonus":false
+         },
+		 {
+            "stat":"base_speed",
+            "value":300,
             "type":"additive",
             "hasBonus":false
          }
@@ -2075,6 +2153,12 @@
             "value":300,
             "type":"additive",
             "hasBonus":false
+         },
+		 {
+            "stat":"base_speed",
+            "value":80,
+            "type":"additive",
+            "hasBonus":false
          }
       ]
    },
@@ -2101,6 +2185,12 @@
             "stat":"Weapon_Grenade_Radius",
             "value":2,
             "type":"multiplicative",
+            "hasBonus":false
+         },
+		 {
+            "stat":"Weapon_Grenade_Speed",
+            "value":60,
+            "type":"additive",
             "hasBonus":false
          }
       ]
